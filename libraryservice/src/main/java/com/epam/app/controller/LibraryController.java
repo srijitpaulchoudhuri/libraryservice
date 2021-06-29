@@ -34,10 +34,9 @@ public class LibraryController {
 	}
 	
 	@GetMapping("/books/{book_id}")
-	public ResponseEntity<Book> getOneBook(@PathVariable("book_id") int bookId){
+	public ResponseEntity<Book> getOneBook(@PathVariable("book_id") int bookId) throws Throwable{
 		return new ResponseEntity<>(libraryService.getOneBook(bookId),HttpStatus.OK);
 	}
-	
 	@PostMapping("/books")
 	public ResponseEntity<Book> addBook(@RequestBody BookDto bookDto){
 		return new ResponseEntity<>(libraryService.addBook(bookDto),HttpStatus.CREATED);

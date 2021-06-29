@@ -12,19 +12,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.epam.app.dto.BookDto;
 import com.epam.app.model.Book;
 
-@FeignClient(name="book-service")
+@FeignClient(name="book-service" /*,fallback = BookClientFallBack.class*/ ,fallbackFactory = BookClientFallBackFactory.class)
 public interface BookClient {
 
 	@GetMapping("/api/books")
 	public List<Book> getAll();
 	
 	@GetMapping("/api/books/{id}")
-	public Book getOne(@PathVariable int id);
+	public Book getOne(@PathVariable int id) throws Throwable;
 	
 	@PostMapping("/api/books")
 	public Book add(@RequestBody BookDto bookDto);
 	
 	@DeleteMapping("/api/books/{id}")
 	public void deletOne(@PathVariable int id);
+	
 	
 }

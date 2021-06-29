@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.epam.app.dto.UserDto;
 import com.epam.app.model.User;
 
-@FeignClient(name="user-service")
+@FeignClient(name="user-service"/*,fallback = UserClientFallback.class*/,fallbackFactory = UserClientFallBackFactory.class)
 public interface UserClient {
 
 	@GetMapping("/api/users")

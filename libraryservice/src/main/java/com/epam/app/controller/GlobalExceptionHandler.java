@@ -17,6 +17,7 @@ public class GlobalExceptionHandler {
 
 	@ExceptionHandler(FeignException.NotFound.class)
 	public ResponseEntity<ErrorResponseTemplate> handleException(FeignException e){
+		System.out.println("From eror handler global");
 		ErrorResponseTemplate error;
 		try {
 			error = new ObjectMapper().readValue(e.contentUTF8(), ErrorResponseTemplate.class);

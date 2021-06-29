@@ -10,7 +10,7 @@ import com.epam.app.model.User;
 public interface LibraryService {
 
 	public List<Book> getAllBooks();
-	public Book getOneBook(int id);
+	public Book getOneBook(int id) throws Throwable;
 	public Book addBook(BookDto bookDto);
 	public void deleteOneBook(int id);
 	public List<User> getAllUsers();

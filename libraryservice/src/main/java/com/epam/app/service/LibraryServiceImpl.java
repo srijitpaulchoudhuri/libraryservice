@@ -24,7 +24,7 @@ public class LibraryServiceImpl implements LibraryService {
 	}
 
 	@Override
-	public Book getOneBook(int id){
+	public Book getOneBook(int id) throws Throwable{
 		return bookClient.getOne(id);
 	}
 

@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.contract.stubrunner.spring.AutoConfigureStubRunner;
 import org.springframework.cloud.contract.stubrunner.spring.StubRunnerProperties.StubsMode;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -29,7 +30,7 @@ class BookContractTest {
 	  
 	  @Test 
 	  void getBookTest() throws Exception {
-	  mockMvc.perform(get("/api/books/1")) .andExpect(status().isOk());
+	  mockMvc.perform(get("/api/books/1").header("Content-Type", MediaType.APPLICATION_JSON)) .andExpect(status().isOk());
 	  //.andExpect(jsonPath("$.id", Matchers.is(1))); 
 	  }
 	 
